@@ -522,17 +522,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Make sure projectData is loaded
     if (projectModal && modalClose) {
-        
-        // Redirect directly to GitHub link instead of opening modal
-        projectCards.forEach(card => {
-            card.addEventListener('click', (e) => {
-                e.preventDefault();
-                const id = parseInt(card.getAttribute('data-id'));
-                const project = projectsData.find(p => p.id === id);
-                const targetLink = (project && project.codeLink) ? project.codeLink : "https://github.com/trungkienjjj";
-                window.open(targetLink, '_blank');
-            });
-        });
 
         function openModal(id) {
             // Find data

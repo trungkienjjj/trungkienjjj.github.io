@@ -1215,6 +1215,8 @@ button, input, textarea {
     display: flex;
     flex-direction: column;
     height: 100%;
+    text-decoration: none;
+    color: inherit;
 }
 
 .project-img-wrapper {
