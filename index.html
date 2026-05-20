@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Trần Trung Kiên | AI Research Engineer</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portfolio nghiên cứu khoa học và kỹ nghệ AI của Nguyễn Trần Trung Kiên. Chuyên sâu về Hierarchical Multi-Agent Systems, Advanced Agentic RAG và Đồ thị Tri thức Thời gian (Temporal KG).">
+    <meta name="keywords" content="Nguyễn Trần Trung Kiên, Trung Kien, AI Research Engineer, Multi-Agent Systems, Agentic RAG, GraphRAG, LangGraph, Neo4j, HCMUS AI, Temporal Knowledge Graph, GRPO LLM">
+    <meta name="author" content="Nguyễn Trần Trung Kiên">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trungkienjjj.github.io/">
+    <meta property="og:title" content="Nguyễn Trần Trung Kiên | AI Research Engineer">
+    <meta property="og:description" content="Nghiên cứu & Kỹ nghệ Hệ thống Multi-Agent Phân cấp & Khung RAG tác tử nâng cao. Sinh viên AI tại HCMUS.">
+    <meta property="og:image" content="assets/project-design.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://trungkienjjj.github.io/">
+    <meta property="twitter:title" content="Nguyễn Trần Trung Kiên | AI Research Engineer">
+    <meta property="twitter:description" content="Nghiên cứu & Kỹ nghệ Hệ thống Multi-Agent Phân cấp & Khung RAG tác tử nâng cao. Sinh viên AI tại HCMUS.">
+    <meta property="twitter:image" content="assets/project-design.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Fallback for no-JS: show all content immediately -->
+    <noscript>
+        <style>
+            .scroll-reveal { opacity: 1 !important; transform: none !important; animation: none !important; }
+        </style>
+    </noscript>
+</head>
+<body class="dark-theme">
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <!-- Background Grid Effect -->
+    <div class="grid-background"></div>
+
+    <!-- Accent Color Switcher -->
+    <div class="theme-switcher-container" id="theme-switcher-container">
+        <button class="switcher-toggle" id="switcher-toggle" aria-label="Thay đổi màu chủ đạo" title="Chọn màu chủ đạo">
+            <i class="fa-solid fa-palette"></i>
+        </button>
+        <div class="theme-menu" id="theme-menu">
+            <h4>Màu Chủ Đạo</h4>
+            <div class="color-options">
+                <button class="color-dot active" data-theme="cyan-purple" style="background: linear-gradient(135deg, #00f2fe, #4facfe);" title="Cyan & Purple"></button>
+                <button class="color-dot" data-theme="emerald-teal" style="background: linear-gradient(135deg, #0575e6, #00f260);" title="Emerald & Teal"></button>
+                <button class="color-dot" data-theme="amber-orange" style="background: linear-gradient(135deg, #f83600, #fe8c00);" title="Amber & Orange"></button>
+                <button class="color-dot" data-theme="ruby-rose" style="background: linear-gradient(135deg, #ff0844, #ffb199);" title="Ruby & Rose"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="header" id="header">
+        <div class="nav-container container">
+            <a href="#home" class="logo hover-target">
+                <span>Kien</span><span>.AI</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link active-link hover-target">Trang Chủ</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link hover-target">Giới Thiệu</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link hover-target">Lĩnh Vực</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link hover-target">Dự Án</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link hover-target">Liên Hệ</a></li>
+                </ul>
+                <div class="nav-close" id="nav-close">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#contact" class="btn btn-sm btn-outline hover-target hide-on-mobile">Hợp Tác Nghiên Cứu</a>
+                <div class="nav-toggle hover-target" id="nav-toggle">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        
+        <!-- Hero Section -->
+        <section class="hero section" id="home">
+            <canvas id="particle-canvas" class="particle-canvas"></canvas>
+            <div class="hero-container container grid">
+                <div class="hero-content">
+                    <span class="hero-subtitle">AI RESEARCH ENGINEER</span>
+                    <h1 class="hero-title">Nguyễn Trần Trung Kiên</h1>
+                    <div class="hero-typed">
+                        <span>Chuyên sâu về </span><span class="typed-text" id="typed-text"></span><span class="typed-cursor">|</span>
+                    </div>
+                    <p class="hero-description">
+                        Thiết kế và tối ưu hóa hệ thống Multi-Agent phân cấp hiệu năng cao và giải pháp Agentic RAG / GraphRAG tiên tiến. Nghiên cứu mô hình suy luận đa bước kết hợp đồ thị tri thức thời gian.
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary hover-target">Xem Nghiên Cứu <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#contact" class="btn btn-outline hover-target">Liên Hệ</a>
+                    </div>
+
+                    <div class="hero-social">
+                        <a href="https://github.com/trungkienjjj" target="_blank" class="social-icon hover-target" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/trungkienjjj/" target="_blank" class="social-icon hover-target" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Interactive Agent Core Mascot (No Static Image Fallback, completely interactive) -->
+                <div class="hero-img-container">
+                    <div class="hero-img-glow"></div>
+                    <div class="agent-core-card glass-card">
+                        <div class="agent-core" id="agent-core">
+                            <div class="core-grid"></div>
+                            <div class="core-ring ring-1"></div>
+                            <div class="core-ring ring-2"></div>
+                            <div class="core-ring ring-3"></div>
+                            <div class="core-eye" id="core-eye">
+                                <div class="core-iris">
+                                    <div class="core-pupil" id="core-pupil">
+                                        <div class="pupil-center"></div>
+                                        <div class="pupil-ring"></div>
+                                    </div>
+                                </div>
+                                <div class="eye-reflection"></div>
+                                <div class="scanner-line"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="floating-badge badge-1 glass-card">
+                            <div class="badge-icon"><i class="fa-solid fa-network-wired"></i></div>
+                            <div class="badge-info">
+                                <h3>Multi-Agent</h3>
+                                <p>Hierarchical State</p>
+                            </div>
+                        </div>
+                        <div class="floating-badge badge-2 glass-card">
+                            <div class="badge-icon"><i class="fa-solid fa-circle-nodes"></i></div>
+                            <div class="badge-info">
+                                <h3>GraphRAG</h3>
+                                <p>Temporal KG</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-down">
+                <a href="#about" class="scroll-link hover-target">
+                    <span>Cuộn xuống</span>
+                    <div class="mouse-wheel">
+                        <div class="wheel-dot"></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about section" id="about">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <span class="section-subtitle">Thông Tin</span>
+                    <h2 class="section-title">Về Bản Thân Tôi</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="about-container grid">
+                    <div class="about-info scroll-reveal delay-1">
+                        <h3 class="about-info-title">Sinh viên ngành Trí tuệ Nhân tạo tại HCMUS với đam mê nghiên cứu sâu.</h3>
+                        <p class="about-info-description">
+                            Tôi là sinh viên năm cuối chuyên ngành Trí tuệ Nhân tạo tại Trường Đại học Khoa học Tự nhiên (HCMUS). Thế mạnh lớn nhất của tôi là nghiên cứu hệ thống Agentic RAG, điều phối Multi-Agent phân cấp và suy luận logic trên Đồ thị Tri thức Thời gian (Temporal Knowledge Graph). 
+                        </p>
+                        <p class="about-info-description">
+                            Sở hữu nền tảng vững chắc về Toán học lý thuyết và tư duy thiết kế hệ thống hướng đối tượng (OOP), tôi hướng tới việc thiết kế và quản trị các thực thể kiến trúc AI vận hành tối ưu trong môi trường production thực tế.
+                        </p>
+                        
+                        <!-- Honors & Achievements Area -->
+                        <div class="honors-container">
+                            <h4 class="honors-section-title"><i class="fa-solid fa-award"></i> Thành Tích Nổi Bật</h4>
+                            <div class="honors-grid grid">
+                                <div class="honor-card glass-card hover-target">
+                                    <div class="honor-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                                    <div class="honor-info">
+                                        <h4>Top 1 GPA Ngành AI</h4>
+                                        <p>Đại học Khoa học Tự nhiên (HCMUS) - Học kỳ 1 Năm 1</p>
+                                    </div>
+                                </div>
+                                <div class="honor-card glass-card hover-target">
+                                    <div class="honor-icon"><i class="fa-solid fa-language"></i></div>
+                                    <div class="honor-info">
+                                        <h4>Chứng chỉ IELTS 6.5</h4>
+                                        <p>Điểm kỹ năng Đọc (Reading) xuất sắc: 8.5 / 9.0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="about-details-list">
+                            <div class="detail-item">
+                                <i class="fa-solid fa-envelope detail-icon"></i>
+                                <div>
+                                    <h4>Email liên hệ</h4>
+                                    <p>nttkien080925@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fa-solid fa-map-location-dot detail-icon"></i>
+                                <div>
+                                    <h4>Địa điểm sinh sống</h4>
+                                    <p>Long Bình, TP. Thủ Đức, TP. Hồ Chí Minh</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-skills scroll-reveal delay-2">
+                        <h3 class="about-skills-title">Kỹ Năng & Công Nghệ</h3>
+                        <div class="skills-categories">
+                            <!-- Agent Frameworks -->
+                            <div class="skills-category">
+                                <h4>Agent Frameworks & Orchestration</h4>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name"><i class="fa-solid fa-diagram-project" style="color: #4facfe;"></i> LangGraph & Multi-Node State Machines</span>
+                                        <span class="skill-percentage">90%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name"><i class="fa-solid fa-route" style="color: #00f2fe;"></i> Conditional Branching & Tool-Call Routing</span>
+                                        <span class="skill-percentage">90%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Knowledge Graph -->
+                            <div class="skills-category">
+                                <h4>Knowledge Graph & Retrieval</h4>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name"><i class="fa-solid fa-circle-nodes" style="color: #00f260;"></i> GraphRAG (Neo4j / Cypher) & Temporal KG</span>
+                                        <span class="skill-percentage">85%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name"><i class="fa-solid fa-magnifying-glass" style="color: #0575e6;"></i> Dense Vector Indexing (FAISS) & Agentic RAG</span>
+                                        <span class="skill-percentage">85%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- LLM Alignment -->
+                            <div class="skills-category">
+                                <h4>LLM Alignment & Training</h4>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name"><i class="fa-solid fa-scale-balanced" style="color: #ff0844;"></i> GRPO (Group Relative Policy Optimization)</span>
+                                        <span class="skill-percentage">80%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name"><i class="fa-solid fa-sliders" style="color: #ffb199;"></i> PEFT / LoRA Fine-tuning & HF Transformers</span>
+                                        <span class="skill-percentage">80%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Programming Languages -->
+                            <div class="skills-category">
+                                <h4>Programming Languages & Core AI</h4>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name"><i class="fa-brands fa-python" style="color: #3572A5;"></i> Python (Advanced) & PyTorch</span>
+                                        <span class="skill-percentage">90%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name"><i class="fa-solid fa-code" style="color: #f34b7d;"></i> C++ (Algorithms & OOP System Design)</span>
+                                        <span class="skill-percentage">85%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services section" id="services">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <span class="section-subtitle">Chuyên Môn</span>
+                    <h2 class="section-title">Lĩnh Vực Nghiên Cứu & Phát Triển</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="services-container grid">
+                    <!-- Service 1 -->
+                    <div class="service-card glass-card scroll-reveal delay-1">
+                        <div class="service-icon"><i class="fa-solid fa-network-wired"></i></div>
+                        <h3 class="service-title">Architecting Multi-Agent Systems</h3>
+                        <p class="service-description">
+                            Thiết kế và lập trình các kiến trúc điều phối agent phân cấp (Hierarchical Orchestration) phức tạp sử dụng LangGraph hoặc các hệ máy trạng thái đa nút, định tuyến tool-call tự động.
+                        </p>
+                        <ul class="service-bullets">
+                            <li><i class="fa-solid fa-check"></i> LangGraph Multi-Node State Machines</li>
+                            <li><i class="fa-solid fa-check"></i> Phân cấp điều phối Planner/Workers</li>
+                            <li><i class="fa-solid fa-check"></i> Tự chữa lành luồng thực thi (Self-healing)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="service-card glass-card scroll-reveal delay-2">
+                        <div class="service-icon"><i class="fa-solid fa-circle-nodes"></i></div>
+                        <h3 class="service-title">Advanced Agentic RAG / GraphRAG</h3>
+                        <p class="service-description">
+                            Xây dựng hệ thống truy xuất thông tin nâng cao kết hợp cơ sở dữ liệu vector và đồ thị tri thức (Temporal Knowledge Graphs). Giúp AI suy luận sâu và tránh ảo giác.
+                        </p>
+                        <ul class="service-bullets">
+                            <li><i class="fa-solid fa-check"></i> Thiết kế Cypher Queries động trên Neo4j</li>
+                            <li><i class="fa-solid fa-check"></i> Dense Vector Indexing (FAISS)</li>
+                            <li><i class="fa-solid fa-check"></i> Suy luận đa bước có yếu tố thời gian</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="service-card glass-card scroll-reveal delay-3">
+                        <div class="service-icon"><i class="fa-solid fa-brain"></i></div>
+                        <h3 class="service-title">LLM Customization & Optimization</h3>
+                        <p class="service-description">
+                            Căn chỉnh LLM theo hướng nghiên cứu mới (GRPO cho suy luận toán học/logic) và fine-tuning tham số hiệu quả (LoRA/PEFT) phục vụ triển khai cục bộ (local).
+                        </p>
+                        <ul class="service-bullets">
+                            <li><i class="fa-solid fa-check"></i> GRPO Alignment & Reward Function</li>
+                            <li><i class="fa-solid fa-check"></i> LoRA Fine-tuning trên HF Transformers</li>
+                            <li><i class="fa-solid fa-check"></i> Triển khai mô hình trên Azure ML / Linux</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects section" id="projects">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <span class="section-subtitle">Dự Án</span>
+                    <h2 class="section-title">Các Đồ Án & Nghiên Cứu</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <!-- Projects Filters -->
+                <div class="project-filters scroll-reveal delay-1">
+                    <button class="filter-btn active hover-target" data-filter="all">Tất Cả</button>
+                    <button class="filter-btn hover-target" data-filter="research">AI Research</button>
+                    <button class="filter-btn hover-target" data-filter="multimodal">Multimodal</button>
+                    <button class="filter-btn hover-target" data-filter="backend">Backend & DB</button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="projects-container grid scroll-reveal delay-2">
+                    
+                    <!-- Project 1 -->
+                    <div class="project-card glass-card" data-category="research" data-id="1">
+                        <div class="project-img-wrapper">
+                            <img src="assets/project-design.png" alt="Enhancing Multi-hop Reasoning" class="project-img">
+                            <div class="project-overlay">
+                                <span class="project-zoom hover-target"><i class="fa-solid fa-eye"></i> Xem Chi Tiết</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">AI Research & System Engineering</span>
+                            <h3 class="project-title">Agentic RAG on Temporal Graph (Thesis)</h3>
+                            <p class="project-short-desc">Xây dựng hệ thống pipeline phân cấp gồm 5 agent điều phối bởi LangGraph giải quyết các câu hỏi suy luận thời gian trên Neo4j & FAISS.</p>
+                            <div class="project-tags">
+                                <span>LangGraph</span>
+                                <span>Neo4j</span>
+                                <span>FAISS</span>
+                                <span>GRPO</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card glass-card" data-category="multimodal" data-id="2">
+                        <div class="project-img-wrapper">
+                            <img src="assets/project-dashboard.png" alt="Video Frame Retrieval" class="project-img">
+                            <div class="project-overlay">
+                                <span class="project-zoom hover-target"><i class="fa-solid fa-eye"></i> Xem Chi Tiết</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Multimodal Retrieval System</span>
+                            <h3 class="project-title">Video-to-Text Semantic Retrieval</h3>
+                            <p class="project-short-desc">Hệ thống tìm kiếm khung hình video bằng ngôn ngữ tự nhiên theo thời gian thực tại AI Challenge 2025.</p>
+                            <div class="project-tags">
+                                <span>FAISS</span>
+                                <span>Embeddings</span>
+                                <span>Caching</span>
+                                <span>Python</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card glass-card" data-category="backend" data-id="3">
+                        <div class="project-img-wrapper">
+                            <img src="assets/project-mobile.png" alt="VietSport Backend" class="project-img">
+                            <div class="project-overlay">
+                                <span class="project-zoom hover-target"><i class="fa-solid fa-eye"></i> Xem Chi Tiết</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Relational Database & Backend System</span>
+                            <h3 class="project-title">VietSport DB Management System</h3>
+                            <p class="project-short-desc">Thiết kế hệ thống cơ sở dữ liệu quan hệ chuẩn hóa quy mô lớn và đồng bộ các ràng buộc logic nghiệp vụ phức tạp.</p>
+                            <div class="project-tags">
+                                <span>SQL</span>
+                                <span>Stored Procedures</span>
+                                <span>Triggers</span>
+                                <span>Optimization</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project-card glass-card" data-category="research" data-id="4">
+                        <div class="project-img-wrapper">
+                            <img src="assets/project-design.png" alt="Custom PEFT Pipeline" class="project-img">
+                            <div class="project-overlay">
+                                <span class="project-zoom hover-target"><i class="fa-solid fa-eye"></i> Xem Chi Tiết</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Core AI & MLOps Pipeline</span>
+                            <h3 class="project-title">Custom PEFT Fine-tuning Pipeline</h3>
+                            <p class="project-short-desc">NLP Coursework: Xây dựng pipeline tự động hóa từ xử lý dữ liệu đến fine-tuning LLM bằng kỹ thuật PEFT (LoRA).</p>
+                            <div class="project-tags">
+                                <span>PyTorch</span>
+                                <span>LoRA</span>
+                                <span>Hugging Face</span>
+                                <span>Azure ML</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section" id="contact">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <span class="section-subtitle">Kết Nối</span>
+                    <h2 class="section-title">Hợp Tác Nghiên Cứu & Phát Triển</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="contact-container grid">
+                    <!-- Contact Cards -->
+                    <div class="contact-info scroll-reveal delay-1">
+                        <h3 class="contact-title">Liên hệ và trao đổi chuyên môn</h3>
+                        <p class="contact-desc">
+                            Tôi luôn hào hứng đón nhận các cơ hội nghiên cứu học thuật, dự án ứng dụng thực tế hoặc trao đổi chuyên sâu về Multi-Agent và RAG. Hãy liên hệ với tôi qua biểu mẫu hoặc qua các kênh trực tiếp dưới đây!
+                        </p>
+                        
+                        <div class="contact-cards-grid grid">
+                            <a href="mailto:nttkien080925@gmail.com" class="contact-card glass-card hover-target">
+                                <div class="card-icon"><i class="fa-solid fa-envelope"></i></div>
+                                <h4>Gửi Email</h4>
+                                <p>nttkien080925@gmail.com</p>
+                                <span class="card-action">Gửi thư cho tôi <i class="fa-solid fa-arrow-right"></i></span>
+                            </a>
+                            
+                            <a href="tel:+84815180935" class="contact-card glass-card hover-target">
+                                <div class="card-icon"><i class="fa-solid fa-phone"></i></div>
+                                <h4>Điện Thoại</h4>
+                                <p>+84 815 180 935</p>
+                                <span class="card-action">Liên hệ trực tiếp <i class="fa-solid fa-arrow-right"></i></span>
+                            </a>
+
+                            <div class="contact-card glass-card">
+                                <div class="card-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                <h4>Địa chỉ</h4>
+                                <p>Long Bình, TP. Thủ Đức, TP. HCM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-container glass-card scroll-reveal delay-2">
+                        <form action="" class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" class="form-input hover-target" placeholder=" " required>
+                                <label for="name" class="form-label">Họ và Tên</label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" class="form-input hover-target" placeholder=" " required>
+                                <label for="email" class="form-label">Địa Chỉ Email</label>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="subject" name="subject" class="form-input hover-target" placeholder=" ">
+                                <label for="subject" class="form-label">Chủ Đề (Không bắt buộc)</label>
+                            </div>
+
+                            <div class="form-group">
+                                <textarea id="message" name="message" class="form-input form-textarea hover-target" placeholder=" " required></textarea>
+                                <label for="message" class="form-label">Nội Dung Tin Nhắn</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-submit hover-target" id="btn-submit">
+                                <span class="btn-text">Gửi Tin Nhắn</span>
+                                <span class="btn-loader"><i class="fa-solid fa-circle-notch fa-spin"></i></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container container grid">
+            <div class="footer-brand">
+                <a href="#home" class="logo hover-target"><span>Kien</span><span>.AI</span></a>
+                <p class="footer-text">Kiến tạo và tối ưu hóa các hệ thống đa tác tử (Multi-Agent) phân cấp và RAG thông minh phục vụ nghiên cứu và thực tế sản xuất.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Đường Dẫn Nhanh</h4>
+                <ul class="footer-list">
+                    <li><a href="#home" class="hover-target">Trang Chủ</a></li>
+                    <li><a href="#about" class="hover-target">Giới Thiệu</a></li>
+                    <li><a href="#services" class="hover-target">Lĩnh Vực</a></li>
+                    <li><a href="#projects" class="hover-target">Dự Án</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h4>Thông Tin</h4>
+                <p><i class="fa-solid fa-envelope"></i> nttkien080925@gmail.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> TP. Thủ Đức, TP. HCM</p>
+                <div class="footer-social">
+                    <a href="https://github.com/trungkienjjj" target="_blank" class="hover-target"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/trungkienjjj/" target="_blank" class="hover-target"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-copy container">
+            <p>&copy; 2026 Nguyễn Trần Trung Kiên. Tất cả các quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <!-- Project Details Lightbox Modal -->
+    <div class="project-modal" id="project-modal">
+        <div class="modal-content glass-card">
+            <button class="modal-close hover-target" id="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-body grid">
+                <div class="modal-img-wrapper">
+                    <img src="" alt="Project Image" class="modal-img" id="modal-img">
+                </div>
+                <div class="modal-info">
+                    <span class="modal-category" id="modal-category">AI Research</span>
+                    <h3 class="modal-title" id="modal-title">Project Name</h3>
+                    <p class="modal-description" id="modal-description">Detailed description will load here dynamically via JavaScript.</p>
+                    
+                    <div class="modal-tech-stack">
+                        <h4>Công Nghệ Sử Dụng</h4>
+                        <div class="modal-tags" id="modal-tags">
+                            <!-- Tags here -->
+                        </div>
+                    </div>
+
+                    <div class="modal-actions">
+                        <a href="https://github.com/trungkienjjj" target="_blank" class="btn btn-primary hover-target" id="modal-btn-code"><i class="fa-solid fa-code"></i> Xem Chi Tiết Dự Án</a>
+                        <a href="https://github.com/trungkienjjj" target="_blank" class="btn btn-outline hover-target" id="modal-btn-demo"><i class="fa-solid fa-graduation-cap"></i> Xem Báo Cáo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Scroll To Top Button -->
+    <button class="scroll-top hover-target" id="scroll-top" aria-label="Lên đầu trang">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Project Data Script (Dynamically parsed by script.js) -->
+    <script>
+        const projectsData = [
+            {
+                id: 1,
+                title: "Enhancing Multi-hop Reasoning in RAG via Agentic Orchestration & Temporal Knowledge Graphs (TKG)",
+                category: "research",
+                categoryLabel: "AI Research & System Engineering",
+                image: "assets/project-design.png",
+                shortDesc: "Xây dựng hệ thống pipeline phân cấp gồm 5 agent điều phối bởi LangGraph giúp giải quyết các câu hỏi suy luận phức tạp có yếu tố thời gian trên Neo4j và FAISS.",
+                description: "Dự án khóa luận tốt nghiệp tập trung giải quyết bài toán suy luận phức tạp có tính thời gian trên đồ thị. Tôi thiết kế kiến trúc điều phối phân cấp gồm 5 agent chuyên biệt: (1) Orchestrator/Planner lập kế hoạch phân rã câu hỏi lớn; (2) TKG Navigator sinh mã Cypher động truy xuất đồ thị Neo4j; (3) Vector Fallback tự chữa lành (Self-healing) thực hiện dense retrieval trên FAISS khi đồ thị thiếu liên kết; (4) Abductive Verifier xác minh logic neuro-symbolic loại bỏ thông tin nhiễu; (5) GRPO Generator sử dụng hàm thưởng tối ưu hóa chính sách nhóm chống hiện tượng ảo giác của mô hình ngôn ngữ lớn.",
+                tags: ["LangGraph", "Neo4j (Cypher)", "FAISS", "GRPO LLM Alignment", "PyTorch", "Hugging Face"],
+                demoLink: "https://github.com/trungkienjjj",
+                codeLink: "https://github.com/trungkienjjj"
+            },
+            {
+                id: 2,
+                title: "Video-to-Text Semantic Retrieval System (AI Challenge 2025)",
+                category: "multimodal",
+                categoryLabel: "Multimodal Retrieval System",
+                image: "assets/project-dashboard.png",
+                shortDesc: "Hệ thống tìm kiếm khung hình video bằng truy vấn ngôn ngữ tự nhiên theo thời gian thực.",
+                description: "Hệ thống được phát triển phục vụ cuộc thi AI Challenge 2025. Tôi đảm nhiệm vai trò Kỹ sư hệ thống thiết kế backend truy xuất ngữ nghĩa. Các khung hình video được trích xuất đặc trưng vector bằng multimodal embeddings và được lập chỉ mục (index) qua thư viện FAISS phục vụ tìm kiếm lân cận (ANN) độ trễ thấp. Đồng thời, tôi thiết kế và tối ưu hóa các chiến lược caching trung gian giúp giảm thiểu tải tính toán và độ trễ phản hồi của toàn bộ luồng pipeline.",
+                tags: ["Python", "FAISS", "Multimodal Embeddings", "Caching Strategies", "Nearest-Neighbor Search"],
+                demoLink: "https://github.com/trungkienjjj",
+                codeLink: "https://github.com/trungkienjjj"
+            },
+            {
+                id: 3,
+                title: "VietSport Management System Backend",
+                category: "backend",
+                categoryLabel: "Relational Database & Backend System",
+                image: "assets/project-mobile.png",
+                shortDesc: "Thiết kế hệ thống cơ sở dữ liệu quan hệ chuẩn hóa quy mô lớn và đồng bộ các ràng buộc logic nghiệp vụ phức tạp.",
+                description: "Hệ thống quản lý trung tâm thể thao với cơ sở dữ liệu quan hệ chuẩn hóa cao gồm hơn 25 bảng thực thể. Tôi thiết kế schema cơ sở dữ liệu và cài đặt toàn bộ logic ràng buộc thông qua Stored Procedures và Triggers trên DBMS (phát hiện xung đột lịch đặt sân, tự động cập nhật kho hàng theo thời gian thực). Tư duy thiết kế này giúp tôi áp dụng tương tự khi xây dựng các luật ràng buộc (rule-based constraint enforcement) kiểm soát hành vi gọi công cụ (tool-call) của các tác tử AI.",
+                tags: ["SQL Database", "Stored Procedures", "Database Triggers", "Query Optimization", "Constraint Enforcement"],
+                demoLink: "https://github.com/trungkienjjj",
+                codeLink: "https://github.com/trungkienjjj"
+            },
+            {
+                id: 4,
+                title: "Custom PEFT Fine-tuning Pipeline for Domain-Specific Language Modelling",
+                category: "research",
+                categoryLabel: "Core AI / MLOps Pipeline",
+                image: "assets/project-design.png",
+                shortDesc: "Pipeline tự động hóa từ xử lý dữ liệu đầu vào đến fine-tuning các mô hình ngôn ngữ lớn bằng kỹ thuật PEFT (LoRA).",
+                description: "Đồ án môn Xử lý Ngôn ngữ Tự nhiên (NLP). Xây dựng một luồng tích hợp (pipeline) tự động hóa quá trình fine-tuning LLM trên các bộ dữ liệu chuyên ngành. Sử dụng kỹ thuật tối ưu hóa tham số hiệu quả PEFT (LoRA) để giảm tài nguyên phần cứng huấn luyện, tích hợp Hugging Face Transformers và triển khai huấn luyện phân tán trên nền tảng Azure ML Studio.",
+                tags: ["Python", "PyTorch", "PEFT/LoRA", "Hugging Face", "Azure ML Studio", "Model Fine-tuning"],
+                demoLink: "https://github.com/trungkienjjj",
+                codeLink: "https://github.com/trungkienjjj"
+            }
+        ];
+    </script>
+
+    <!-- Main Javascript -->
+    <script src="script.js"></script>
+</body>
+</html>

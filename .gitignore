@@ -1,0 +1,7 @@
+# Portfolio - Nguyễn Trần Trung Kiên
+# AI Research Engineer | Multi-Agent Systems & Agentic RAG
+
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
