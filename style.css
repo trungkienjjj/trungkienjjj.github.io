@@ -270,6 +270,13 @@ button, input, textarea {
 }
 
 /* ==================== CUSTOM CURSOR ==================== */
+/* Hide default browser cursor on desktop to only show the custom cursor */
+@media screen and (min-width: 769px) {
+    html, body, a, button, input, textarea, select, iframe, .hover-target, .project-card, .contact-card, .color-dot {
+        cursor: none !important;
+    }
+}
+
 .custom-cursor {
     width: 8px;
     height: 8px;

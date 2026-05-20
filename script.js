@@ -490,22 +490,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (filterValue === 'all' || category === filterValue) {
                     card.style.display = 'flex';
                     // Trigger fade in animation
-                    card.classList.remove('fade-out');
-                    card.classList.add('fade-in');
-                } else {
-                    card.classList.remove('fade-in');
-                    card.classList.add('fade-out');
-                    // Hide after animation finishes
                     setTimeout(() => {
-                        if (card.classList.contains('fade-out')) {
-                            card.style.display = 'none';
-                        }
-                    }, 400);
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.8)';
+                    card.style.display = 'none';
                 }
             });
             
             // Re-setup custom cursor hovers since layout reflowed
-            setTimeout(setupCursorHovers, 450);
+            setTimeout(setupCursorHovers, 150);
         });
     });
 
@@ -526,12 +523,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Make sure projectData is loaded
     if (projectModal && modalClose) {
         
-        // Open modal on project card click or zoom click
+        // Redirect directly to GitHub link instead of opening modal
         projectCards.forEach(card => {
-            const trigger = card.querySelector('.project-img-wrapper');
-            trigger.addEventListener('click', () => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
                 const id = parseInt(card.getAttribute('data-id'));
-                openModal(id);
+                const project = projectsData.find(p => p.id === id);
+                const targetLink = (project && project.codeLink) ? project.codeLink : "https://github.com/trungkienjjj";
+                window.open(targetLink, '_blank');
             });
         });
 
