@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#080b12"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#36d7ff"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1030" cy="80" r="280" fill="#36d7ff" opacity=".08"/>
+  <circle cx="110" cy="590" r="260" fill="#8b5cf6" opacity=".09"/>
+  <rect x="80" y="82" width="72" height="72" rx="20" fill="none" stroke="url(#accent)" stroke-width="3"/>
+  <text x="116" y="132" text-anchor="middle" fill="#36d7ff" font-size="40" font-family="Arial" font-weight="700">K</text>
+  <text x="80" y="250" fill="#f8fafc" font-size="67" font-family="Arial" font-weight="700">Nguyen Tran Trung Kien</text>
+  <text x="80" y="322" fill="url(#accent)" font-size="42" font-family="Arial" font-weight="700">AI Engineer Portfolio</text>
+  <text x="80" y="400" fill="#a5afc0" font-size="27" font-family="Arial">Multimodal AI · Vietnamese OCR · NLP · Data Systems</text>
+  <text x="80" y="500" fill="#f8fafc" font-size="24" font-family="Arial">trungkienjjj.github.io</text>
+</svg>
