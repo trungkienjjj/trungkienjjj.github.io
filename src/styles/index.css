@@ -1,0 +1,273 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: 11 15 23;
+  --surface: 20 26 36;
+  --paper: 236 232 221;
+  --muted: 168 175 192;
+  --amber: 227 164 88;
+  --teal: 95 184 176;
+  --line: 236 232 221;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --ink: 246 244 238;
+  --surface: 255 255 255;
+  --paper: 23 26 31;
+  --muted: 89 97 109;
+  --amber: 185 122 42;
+  --teal: 46 142 134;
+  --line: 23 26 31;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: rgb(var(--ink));
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  background: rgb(var(--ink));
+  color: rgb(var(--paper));
+  font-family: "IBM Plex Sans", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgb(var(--teal) / 0.28);
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--teal));
+  outline-offset: 4px;
+  box-shadow: 0 0 0 4px rgb(var(--teal) / 0.18);
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  transform: translateY(-180%);
+  background: rgb(var(--paper));
+  color: rgb(var(--ink));
+  padding: 0.65rem 0.9rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+.ledger-grid {
+  background-image:
+    linear-gradient(rgb(var(--line) / 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--line) / 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: center top;
+}
+
+.ledger-section {
+  scroll-margin-top: 5.5rem;
+  padding-block: clamp(5.5rem, 9vw, 8.5rem);
+}
+
+@layer components {
+  .button-primary,
+  .button-secondary {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 border px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.08em] transition;
+  }
+
+  .button-primary {
+    @apply border-teal bg-teal text-ink hover:-translate-y-0.5 hover:bg-paper focus-visible:bg-paper;
+  }
+
+  .button-secondary {
+    @apply border-line/15 bg-surface/60 text-paper hover:-translate-y-0.5 hover:border-teal/50 hover:text-teal;
+  }
+
+  .icon-button {
+    @apply inline-flex h-9 min-w-9 items-center justify-center border border-line/15 bg-surface/60 px-2 font-mono text-[0.65rem] uppercase text-muted transition hover:border-teal/50 hover:text-paper;
+  }
+
+  .text-link {
+    @apply transition hover:text-teal focus-visible:text-teal;
+  }
+
+  .graph-shell {
+    @apply overflow-hidden border border-line/10 bg-surface/70 shadow-ledger backdrop-blur;
+  }
+
+  .graph-shell-compact {
+    @apply lg:min-h-[560px];
+  }
+
+  .segment-button {
+    @apply border border-transparent px-2 py-1 font-mono text-[0.62rem] uppercase tracking-[0.1em] text-muted transition hover:text-paper;
+  }
+
+  .segment-button-active {
+    @apply border-teal/35 bg-teal/10 text-teal;
+  }
+
+  .time-button {
+    @apply border border-line/10 px-2 py-1 font-mono text-[0.58rem] uppercase tracking-[0.08em] text-muted transition hover:border-amber/40 hover:text-paper;
+  }
+
+  .time-button-active {
+    @apply border-amber/45 bg-amber/10 text-amber;
+  }
+
+  .search-input {
+    @apply w-full border border-line/10 bg-ink/45 px-3 py-2.5 font-mono text-xs text-paper outline-none placeholder:text-muted focus:border-teal/55;
+  }
+
+  .eyebrow-badge {
+    @apply inline-flex border border-line/10 bg-surface/60 px-2 py-1 font-mono text-[0.62rem] uppercase tracking-[0.1em] text-muted;
+  }
+
+  .role-badge {
+    @apply inline-flex border border-teal/25 bg-teal/5 px-2 py-1 font-mono text-[0.62rem] uppercase tracking-[0.08em] text-teal;
+  }
+
+  .case-shell {
+    @apply scroll-mt-24 border-t border-line/10 py-14 sm:py-20;
+  }
+
+  .case-grid {
+    @apply grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12;
+  }
+
+  .tag {
+    @apply inline-flex border border-line/10 bg-surface/60 px-2 py-1 font-mono text-[0.62rem] text-muted;
+  }
+
+  .project-card {
+    @apply flex h-full flex-col border border-line/10 bg-surface/65 p-5 transition hover:-translate-y-1 hover:border-teal/40 hover:shadow-ledger focus-within:border-teal/50;
+  }
+}
+
+.graph-cluster-label {
+  fill: rgb(var(--muted));
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  opacity: 0.72;
+}
+
+.graph-edge,
+.graph-edge-cross {
+  fill: none;
+  stroke-width: 1.5;
+  transition: opacity 180ms ease;
+}
+
+.graph-edge {
+  stroke: rgb(var(--teal));
+}
+
+.graph-edge-cross {
+  stroke: rgb(var(--amber));
+  stroke-dasharray: 5 5;
+}
+
+.graph-node circle:first-of-type {
+  fill: rgb(var(--surface) / 0.94);
+  stroke-width: 2;
+  transition:
+    r 180ms ease,
+    filter 180ms ease;
+}
+
+.graph-node:focus-visible {
+  outline: none;
+  filter: drop-shadow(0 0 10px rgb(var(--teal) / 0.7));
+}
+
+.graph-node-teal {
+  stroke: rgb(var(--teal));
+}
+
+.graph-node-amber {
+  stroke: rgb(var(--amber));
+}
+
+.graph-node-label {
+  fill: rgb(var(--paper));
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.graph-node-period {
+  fill: rgb(var(--muted));
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+}
+
+.rules-block {
+  overflow-x: auto;
+  border: 1px solid rgb(var(--line) / 0.12);
+  background:
+    linear-gradient(rgb(var(--line) / 0.035) 1px, transparent 1px),
+    rgb(var(--surface) / 0.72);
+  background-size: 100% 1.8rem;
+  padding: 1.25rem;
+  color: rgb(var(--muted));
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  line-height: 1.8rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
