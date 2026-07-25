@@ -13,16 +13,13 @@ interface LayoutNode extends SimulationNodeDatum {
 const targets: Record<string, [number, number]> = {
   "deepseek-ocr": [145, 145],
   "historical-ocr": [245, 285],
-  "agentic-rag": [500, 105],
   "legal-graph": [735, 145],
-  "video-retrieval": [470, 285],
   "algorithm-benchmark": [610, 235],
-  "hashi-solvers": [735, 340],
+  "model-merging": [420, 230],
   spendsense: [540, 475],
   "weather-monitor": [750, 475],
   "hr-analytics": [145, 485],
   "netflix-recommender": [300, 505],
-  "happiness-dashboard": [455, 400],
   "wdi-dashboard": [220, 390],
   vietsport: [360, 330]
 };
@@ -30,8 +27,9 @@ const targets: Record<string, [number, number]> = {
 export function useClusterLayout() {
   return useMemo(() => {
     const radiusScale = scaleLinear().domain([1, 4]).range([31, 43]);
-    const nodes: LayoutNode[] = projects.map((project) => {
-      const [targetX, targetY] = targets[project.id];
+    const nodes: LayoutNode[] = projects.map((project, index) => {
+      const [targetX, targetY] =
+        targets[project.id] ?? [120 + (index % 4) * 210, 120 + Math.floor(index / 4) * 175];
       return {
         id: project.id,
         x: targetX,

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const navItems = [
   ["About", "#about"],
@@ -20,6 +20,7 @@ function GraphMark() {
 
 export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const [theme, setTheme] = useState<"dark" | "light">(
     document.documentElement.dataset.theme === "light" ? "light" : "dark"
   );
@@ -32,6 +33,20 @@ export function Nav() {
       ?.setAttribute("content", theme === "dark" ? "#0B0F17" : "#F6F4EE");
   }, [theme]);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [menuOpen]);
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line/10 bg-ink/90 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-page items-center gap-5 px-5 sm:px-7">
@@ -42,6 +57,7 @@ export function Nav() {
         </a>
 
         <nav
+          id="primary-navigation"
           className={`${menuOpen ? "flex" : "hidden"} absolute left-5 right-5 top-[4.5rem] flex-col gap-1 border border-line/10 bg-surface p-3 shadow-ledger md:static md:ml-auto md:flex md:flex-row md:border-0 md:bg-transparent md:p-0 md:shadow-none`}
           aria-label="Primary navigation"
         >
@@ -56,12 +72,12 @@ export function Nav() {
             </a>
           ))}
           <a
-            href="/assets/NguyenTranTrungKien_AI_ML_Research_CV.pdf"
+            href="/assets/NguyenTranTrungKien_AI_ML_Public_2026-07-21.pdf"
             download
             onClick={() => setMenuOpen(false)}
             className="mt-2 border-t border-line/10 px-3 pt-3 font-mono text-xs uppercase tracking-[0.12em] text-teal md:hidden"
           >
-            Download CV ↓
+            Download public CV
           </a>
         </nav>
 
@@ -74,14 +90,20 @@ export function Nav() {
           >
             <span aria-hidden="true">{theme === "dark" ? "sun" : "moon"}</span>
           </button>
-          <a className="button-secondary hidden sm:inline-flex" href="/assets/NguyenTranTrungKien_AI_ML_Research_CV.pdf" download>
-            CV <span aria-hidden="true">↓</span>
+          <a
+            className="button-secondary hidden sm:inline-flex"
+            href="/assets/NguyenTranTrungKien_AI_ML_Public_2026-07-21.pdf"
+            download
+          >
+            Download public CV
           </a>
           <button
+            ref={menuButtonRef}
             type="button"
             className="icon-button md:hidden"
             aria-label={`${menuOpen ? "Close" : "Menu"}: toggle navigation`}
             aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
             onClick={() => setMenuOpen((open) => !open)}
           >
             <span aria-hidden="true">{menuOpen ? "close" : "menu"}</span>

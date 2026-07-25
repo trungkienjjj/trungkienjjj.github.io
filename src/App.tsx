@@ -8,7 +8,7 @@ import { Nav } from "./components/Nav";
 import { DeepSeekCaseStudy } from "./components/CaseStudy/DeepSeekCaseStudy";
 import { HistoricalOcrCaseStudy } from "./components/CaseStudy/HistoricalOcrCaseStudy";
 import { LegalGraphCaseStudy } from "./components/CaseStudy/LegalGraphCaseStudy";
-import { TemporalRagCaseStudy } from "./components/CaseStudy/TemporalRagCaseStudy";
+import { SpendSenseCaseStudy } from "./components/CaseStudy/SpendSenseCaseStudy";
 import { SectionHeader } from "./components/SectionHeader";
 import { GraphExplorer } from "./components/TheGraph/GraphExplorer";
 
@@ -17,7 +17,7 @@ export default function App() {
     <>
       <a className="skip-link" href="#main">Skip to content</a>
       <Nav />
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <Hero />
         <About />
         <section id="projects" className="ledger-section pt-4">
@@ -26,14 +26,14 @@ export default function App() {
               figure="// fig. 03"
               eyebrow="Selected work"
               title="Projects made visible through their systems and measurements."
-              intro="Explore relationships first, then move through four full case studies and ten compact records."
+              intro="Explore relationships first, then move through four full case studies and seven compact records."
             />
             <GraphExplorer />
             <div className="mt-14">
               <DeepSeekCaseStudy />
-              <TemporalRagCaseStudy />
-              <LegalGraphCaseStudy />
               <HistoricalOcrCaseStudy />
+              <LegalGraphCaseStudy />
+              <SpendSenseCaseStudy />
             </div>
             <MoreProjects />
           </div>
@@ -44,11 +44,11 @@ export default function App() {
       </main>
       <footer className="border-t border-line/10 py-7">
         <div className="mx-auto flex max-w-page flex-col gap-3 px-5 font-mono text-[0.65rem] text-muted sm:flex-row sm:items-center sm:justify-between sm:px-7">
-          <p>© {new Date().getFullYear()} Nguyen Tran Trung Kien</p>
+          <p>(c) {new Date().getFullYear()} Nguyen Tran Trung Kien</p>
           <div className="flex gap-4">
-            <a className="text-link" href="https://github.com/trungkienjjj" target="_blank" rel="noreferrer">GitHub ↗</a>
-            <a className="text-link" href="https://linkedin.com/in/trungkienjjj" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-            <a className="text-link" href="#home">Top ↑</a>
+            <a className="text-link" href="https://github.com/trungkienjjj" target="_blank" rel="noreferrer">GitHub</a>
+            <a className="text-link" href="https://linkedin.com/in/trungkienjjj" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a className="text-link" href="#home">Top</a>
           </div>
         </div>
       </footer>

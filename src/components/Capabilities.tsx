@@ -2,39 +2,34 @@ import { SectionHeader } from "./SectionHeader";
 
 const capabilities = [
   {
-    name: "Generative AI & LLMs",
-    tags: ["Transformers", "PEFT/LoRA", "Prompt design", "LangChain"],
-    links: [["DeepSeek-OCR", "#deepseek-ocr"], ["Temporal RAG", "#agentic-rag"]]
-  },
-  {
-    name: "AI Agents & RAG",
-    tags: ["LangGraph", "State contracts", "Fallback routing", "Abstention"],
-    links: [["Temporal RAG", "#agentic-rag"], ["Video retrieval", "#video-retrieval"]]
-  },
-  {
-    name: "Multimodal AI & OCR",
-    tags: ["DeepSeek-OCR", "Image preprocessing", "Bounding boxes", "Embeddings"],
+    name: "Multimodal AI and OCR",
+    tags: ["DeepSeek-OCR", "PyTorch", "LoRA/PEFT", "Image preprocessing"],
     links: [["Model adaptation", "#deepseek-ocr"], ["Dataset pipeline", "#historical-ocr"]]
   },
   {
-    name: "AI Evaluation & Reliability",
-    tags: ["CER", "Percentiles", "Hallucination review", "Timeout monitoring"],
-    links: [["OCR evaluation", "#deepseek-ocr"], ["HR comparison", "#hr-analytics"]]
+    name: "Evaluation and reliability",
+    tags: ["CER", "Error analysis", "Failure traces", "Regression checks"],
+    links: [["OCR evaluation", "#deepseek-ocr"], ["Legal graph audit", "#legal-graph"]]
   },
   {
-    name: "Backend & Data Engineering",
-    tags: ["Python", "FastAPI", "SQL", "ETL", "Docker"],
-    links: [["Weather platform", "#weather-monitor"], ["VietSport DB", "#vietsport"]]
+    name: "Knowledge graphs",
+    tags: ["Neo4j", "Cypher", "Bulk import", "Integrity audits"],
+    links: [["Vietnamese Legal KG", "#legal-graph"]]
   },
   {
-    name: "Knowledge Graphs & Retrieval",
-    tags: ["Neo4j", "Cypher", "FAISS", "ChromaDB"],
-    links: [["Legal KG", "#legal-graph"], ["Temporal RAG", "#agentic-rag"]]
+    name: "Backend and product systems",
+    tags: ["Python", "FastAPI", "React", "TypeScript", "Resilience"],
+    links: [["SpendSense", "#spendsense"], ["Weather platform", "#weather-monitor"]]
   },
   {
-    name: "MLOps & Developer Tools",
-    tags: ["Git/GitHub", "Kaggle", "Azure ML", "Reproducible notebooks"],
-    links: [["DeepSeek-OCR", "#deepseek-ocr"], ["Legal KG", "#legal-graph"]]
+    name: "Data engineering",
+    tags: ["SQL", "ETL", "Docker", "Dataset QA", "Transactions"],
+    links: [["Historical OCR", "#historical-ocr"], ["VietSport DB", "#vietsport"]]
+  },
+  {
+    name: "Applied machine learning",
+    tags: ["NumPy", "Retrieval", "Optimization", "Experiment design"],
+    links: [["HR analytics", "#hr-analytics"], ["Algorithm benchmark", "#algorithm-benchmark"]]
   }
 ];
 
@@ -55,7 +50,7 @@ export function Capabilities() {
                 {capability.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}
               </div>
               <p className="mt-7 font-mono text-[0.62rem] uppercase tracking-[0.1em] text-muted">
-                Demonstrated in →
+                Demonstrated in -&gt;
               </p>
               <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
                 {capability.links.map(([label, href]) => (

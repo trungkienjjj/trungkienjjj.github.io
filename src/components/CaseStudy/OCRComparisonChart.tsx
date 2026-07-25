@@ -78,8 +78,14 @@ export default function OCRComparisonChart() {
           <span className="h-2 w-2 rounded-full bg-teal" /> Fine-tuned
         </span>
       </div>
-      <div className="h-[370px] w-full" aria-hidden="true">
-        <ResponsiveContainer width="100%" height="100%">
+      <div className="h-[370px] min-w-0 w-full" aria-hidden="true">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          minWidth={0}
+          minHeight={370}
+          initialDimension={{ width: 320, height: 370 }}
+        >
           <BarChart accessibilityLayer={false} data={metrics} layout="vertical" margin={{ top: 20, right: 36, left: 10, bottom: 10 }}>
             <CartesianGrid stroke="rgb(var(--line) / 0.08)" horizontal={false} />
             <XAxis

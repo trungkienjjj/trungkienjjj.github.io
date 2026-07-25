@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { m } from "framer-motion";
 import { select } from "d3-selection";
 import {
@@ -43,6 +43,8 @@ export default function Graph({
   const layout = useClusterLayout();
   const reducedMotion = useMotionPreferences();
   const svgRef = useRef<SVGSVGElement>(null);
+  const titleId = useId();
+  const descriptionId = useId();
   const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -68,10 +70,10 @@ export default function Graph({
         viewBox="0 0 900 570"
         className={`w-full ${compact ? "min-h-[360px]" : "min-h-[440px]"}`}
         role="img"
-        aria-labelledby="graph-title graph-desc"
+        aria-labelledby={`${titleId} ${descriptionId}`}
       >
-        <title id="graph-title">Project relationship graph</title>
-        <desc id="graph-desc">
+        <title id={titleId}>Project relationship graph</title>
+        <desc id={descriptionId}>
           {projects.length} portfolio projects grouped into reasoning and retrieval, vision and language,
           and systems and data. Lines connect projects with shared tags.
         </desc>

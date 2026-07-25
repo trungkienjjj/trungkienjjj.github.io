@@ -18,8 +18,8 @@
   --surface: 255 255 255;
   --paper: 23 26 31;
   --muted: 89 97 109;
-  --amber: 185 122 42;
-  --teal: 46 142 134;
+  --amber: 160 95 20;
+  --teal: 35 120 113;
   --line: 23 26 31;
   color-scheme: light;
 }
@@ -270,4 +270,17 @@ a {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+:root[data-motion="reduce"] {
+  scroll-behavior: auto;
+}
+
+:root[data-motion="reduce"] *,
+:root[data-motion="reduce"] *::before,
+:root[data-motion="reduce"] *::after {
+  scroll-behavior: auto !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
 }

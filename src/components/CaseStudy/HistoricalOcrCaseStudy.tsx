@@ -8,15 +8,15 @@ export function HistoricalOcrCaseStudy() {
   return (
     <article id={project.id} className="case-shell">
       <div className="case-grid">
-        <CaseIntro project={project} label="// case 04 · dataset engineering">
+        <CaseIntro project={project} label="// case 02 - dataset engineering">
           <p>
             Repeated OCR ambiguities and page-layout errors were converted into deterministic
             editing, geometry, filtering, and validation rules.
           </p>
           <p>
-            The result was 8,687 aligned text lines from 240 pages of{" "}
-            <em>Dai Viet Su Ky Toan Thu</em>, exceeding the original 3,000-line target by
-            189.6%.
+            My contribution produced <strong className="text-teal">8,687 aligned text lines</strong>{" "}
+            from <strong className="text-amber">235 artifact-backed source page images</strong>{" "}
+            within a team project.
           </p>
         </CaseIntro>
         <FunnelChart />

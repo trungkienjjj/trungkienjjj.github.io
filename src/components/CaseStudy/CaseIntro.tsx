@@ -38,7 +38,7 @@ export function CaseIntro({
               target="_blank"
               rel="noreferrer"
             >
-              {link.label} ↗
+              {link.label} [new tab]
             </a>
           ))}
         </div>

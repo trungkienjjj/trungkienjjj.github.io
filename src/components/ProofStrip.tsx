@@ -1,8 +1,8 @@
 const proof = [
-  { value: "68.4% CER ↓", label: "DeepSeek-OCR", href: "#deepseek-ocr", color: "text-amber" },
+  { value: "68.4% CER reduction", label: "DeepSeek-OCR", href: "#deepseek-ocr", color: "text-amber" },
   { value: "8,687 lines", label: "Historical OCR", href: "#historical-ocr", color: "text-teal" },
-  { value: "7.8M nodes", label: "Legal knowledge graph", href: "#legal-graph", color: "text-teal" },
-  { value: "3.81 GPA", label: "Education", href: "#education", color: "text-amber" }
+  { value: "142 duplicates found", label: "Legal graph audit", href: "#legal-graph", color: "text-teal" },
+  { value: "3 market domains", label: "SpendSense", href: "#spendsense", color: "text-amber" }
 ];
 
 export function ProofStrip() {

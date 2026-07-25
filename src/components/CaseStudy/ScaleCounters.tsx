@@ -5,12 +5,9 @@ import { useMotionPreferences } from "../../motion/MotionPreferences";
 interface CounterProps {
   value: number;
   label: string;
-  prefix?: string;
-  suffix?: string;
-  decimals?: number;
 }
 
-function Counter({ value, label, prefix = "", suffix = "", decimals = 0 }: CounterProps) {
+function Counter({ value, label }: CounterProps) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.55 });
   const reducedMotion = useMotionPreferences();
@@ -40,12 +37,7 @@ function Counter({ value, label, prefix = "", suffix = "", decimals = 0 }: Count
   return (
     <div ref={ref} className="border-l border-line/10 pl-4">
       <strong className="block font-mono text-2xl font-semibold tracking-[-0.04em] text-teal sm:text-3xl">
-        {prefix}
-        {display.toLocaleString("en-US", {
-          minimumFractionDigits: decimals,
-          maximumFractionDigits: decimals
-        })}
-        {suffix}
+        {Math.round(display).toLocaleString("en-US")}
       </strong>
       <span className="mt-2 block text-xs text-muted">{label}</span>
     </div>
@@ -65,14 +57,16 @@ export function ScaleCounters() {
       </svg>
       <div className="relative">
         <p className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
-          aggregate graph scale
+          artifact export and audit counts
         </p>
         <div className="mt-12 grid gap-8 sm:grid-cols-2">
-          <Counter value={7833706} label="nodes" />
-          <Counter value={19994844} label="relationships" />
-          <Counter value={1.5} decimals={1} prefix="~" suffix=" GB" label="source data" />
-          <Counter value={15} prefix="~" suffix=" min" label="local import" />
+          <Counter value={7833848} label="node-export rows" />
+          <Counter value={19994844} label="relationship-export rows" />
+          <Counter value={142} label="duplicate identifiers surfaced" />
         </div>
+        <p className="mt-10 border-t border-line/10 pt-4 text-xs leading-5 text-muted">
+          Export-row totals are not presented as live database runtime counts.
+        </p>
       </div>
     </div>
   );

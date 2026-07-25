@@ -19,38 +19,40 @@ export function Hero() {
           <m.div {...reveal} transition={{ duration: 0.55 }}>
             <div className="mb-5 inline-flex items-center gap-3 border border-teal/25 bg-teal/5 px-3 py-2 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-teal">
               <span className="h-1.5 w-1.5 bg-teal shadow-[0_0_14px_rgb(var(--teal))]" />
-              Available for AI internships
+              AI / ML / Evaluation
             </div>
             <p className="mb-4 font-mono text-xs uppercase tracking-[0.16em] text-muted">
-              // Ho Chi Minh City · AI / ML / Research
+              // Nguyen Tran Trung Kien · Ho Chi Minh City, Vietnam
             </p>
             <h1 className="font-mono text-[clamp(2.75rem,6vw,5.8rem)] font-semibold leading-[0.98] tracking-[-0.065em] text-paper">
-              Building AI systems that are{" "}
-              <span className="text-amber">measurable</span>, useful, and{" "}
-              <span className="text-teal">reliable</span>.
+              I build <span className="text-amber">measurable</span>, inspectable AI systems.
             </h1>
             <p className="mt-7 max-w-2xl text-base leading-7 text-muted sm:text-lg">
-              Final-year Artificial Intelligence undergraduate at HCMUS, expected to graduate
-              in 2027. I work across multimodal AI, Vietnamese OCR, NLP, data pipelines, and
-              backend systems.
+              Artificial Intelligence undergraduate at HCMUS, with evidence-backed work in
+              Vietnamese OCR, evaluation, knowledge graphs, data pipelines, and reliable Python
+              services.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a className="button-primary" href="#projects">
-                Explore projects <span aria-hidden="true">→</span>
+                Explore work <span aria-hidden="true">-&gt;</span>
               </a>
-              <a className="button-secondary" href="mailto:nttkien080925@gmail.com">
-                Email me
+              <a
+                className="button-secondary"
+                href="/assets/NguyenTranTrungKien_AI_ML_Public_2026-07-21.pdf"
+                download
+              >
+                Download public CV
               </a>
             </div>
             <div className="mt-7 flex flex-wrap gap-5 font-mono text-xs text-muted">
               <a className="text-link" href="https://github.com/trungkienjjj" target="_blank" rel="noreferrer">
-                GitHub ↗
+                GitHub [new tab]
               </a>
               <a className="text-link" href="https://linkedin.com/in/trungkienjjj" target="_blank" rel="noreferrer">
-                LinkedIn ↗
+                LinkedIn [new tab]
               </a>
               <a className="text-link" href="https://www.kaggle.com/nguyentrantrungkien" target="_blank" rel="noreferrer">
-                Kaggle ↗
+                Kaggle [new tab]
               </a>
             </div>
           </m.div>

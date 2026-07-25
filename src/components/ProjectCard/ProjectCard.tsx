@@ -1,8 +1,4 @@
-import { lazy, Suspense } from "react";
 import type { Project } from "../../data/projects";
-import { DeferredRender } from "../DeferredRender";
-
-const HrMiniChart = lazy(() => import("./HrMiniChart"));
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
@@ -18,13 +14,6 @@ export function ProjectCard({ project }: { project: Project }) {
       <p className="mt-5 border-l border-teal/35 pl-3 font-mono text-xs leading-5 text-teal">
         {project.headlineMetric}
       </p>
-      {project.id === "hr-analytics" && (
-        <DeferredRender fallback={<div className="mt-5 h-44 bg-line/5" />}>
-          <Suspense fallback={<div className="mt-5 h-44 animate-pulse bg-line/5" />}>
-            <HrMiniChart />
-          </Suspense>
-        </DeferredRender>
-      )}
       <div className="mt-5 flex flex-wrap gap-2">
         {project.tech.slice(0, 5).map((tech) => (
           <span className="tag" key={tech}>{tech}</span>
@@ -39,7 +28,7 @@ export function ProjectCard({ project }: { project: Project }) {
             target="_blank"
             rel="noreferrer"
           >
-            {link.label} ↗
+            {link.label} [new tab]
           </a>
         ))}
       </div>
