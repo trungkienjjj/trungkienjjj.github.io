@@ -38,7 +38,6 @@ export function Capabilities() {
     <section id="capabilities" className="ledger-section">
       <div className="mx-auto max-w-page px-5 sm:px-7">
         <SectionHeader
-          figure="// fig. 07"
           eyebrow="Capabilities"
           title="Skills linked to the work that demonstrates them."
         />

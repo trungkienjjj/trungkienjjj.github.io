@@ -1,4 +1,3 @@
-export type ProjectPeriod = "2025" | "2025-2026" | "2026";
 export type ProjectCluster = "reasoning" | "vision" | "systems";
 
 export interface ProjectLink {
@@ -12,7 +11,6 @@ export interface Project {
   graphLabel: string;
   type: string;
   period: string;
-  periodKey: ProjectPeriod;
   cluster: ProjectCluster;
   featured: boolean;
   graphTags: string[];
@@ -30,7 +28,6 @@ export const projects: Project[] = [
     graphLabel: "DeepSeek-OCR",
     type: "Individual coursework",
     period: "2025-2026",
-    periodKey: "2025-2026",
     cluster: "vision",
     featured: true,
     graphTags: ["OCR", "LoRA/PEFT", "Multimodal", "Evaluation"],
@@ -56,7 +53,6 @@ export const projects: Project[] = [
     graphLabel: "Historical OCR",
     type: "Completed contribution - team coursework",
     period: "2025",
-    periodKey: "2025",
     cluster: "vision",
     featured: true,
     graphTags: ["OCR", "Data Engineering"],
@@ -65,7 +61,7 @@ export const projects: Project[] = [
     summary:
       "A semi-automatic pipeline that converts scanned historical pages into aligned line crops, bounding boxes, and Unicode labels.",
     contributions: [
-      "Produced 8,687 aligned text lines from 235 artifact-backed source page images.",
+      "Prepared and validated 8,687 aligned text lines and crops from 235 source page images in my share of the team dataset.",
       "Built an interactive line-break editor and deterministic text-to-box mapping tools.",
       "Added geometry normalization, footer filtering, box merging, and crop/export completeness checks."
     ],
@@ -78,21 +74,20 @@ export const projects: Project[] = [
   },
   {
     id: "legal-graph",
-    title: "Vietnamese Legal Knowledge Graph",
+    title: "VietLegalGraphRAG",
     graphLabel: "Legal KG",
     type: "Team contribution - working course prototype",
     period: "2026",
-    periodKey: "2026",
     cluster: "reasoning",
     featured: true,
-    graphTags: ["Neo4j", "Data Engineering", "Evaluation"],
+    graphTags: ["Neo4j", "Data Engineering", "Evaluation", "Retrieval"],
     tech: ["Neo4j", "Cypher", "Docker", "Python", "PowerShell", "WSL"],
     headlineMetric: "7,833,848 node-export rows / 19,994,844 relationship-export rows",
     summary:
-      "Import tooling, graph integrity audits, and LLM evaluation artifacts for a Vietnamese legal knowledge-graph prototype.",
+      "A Vietnamese legal question-answering course prototype based on a knowledge graph. My work focused on Neo4j import, data integrity, and evaluation support.",
     contributions: [
       "Developed preprocessing and Neo4j bulk-import tooling for the team graph.",
-      "Built graph audit checks that surfaced 142 duplicate identifiers.",
+      "Built graph audit checks that flagged 142 duplicate metadata node IDs.",
       "Contributed LLM evaluation artifacts, tests, and teammate setup documentation."
     ]
   },
@@ -102,7 +97,6 @@ export const projects: Project[] = [
     graphLabel: "SpendSense",
     type: "Team contribution - working prototype",
     period: "2026",
-    periodKey: "2026",
     cluster: "systems",
     featured: true,
     graphTags: ["FastAPI", "React/TS", "Data Engineering"],
@@ -111,7 +105,7 @@ export const projects: Project[] = [
     summary:
       "An AI-assisted personal-finance platform spanning asset entry, allocation guidance, market data, and report generation.",
     contributions: [
-      "Owned investment and robo-advisor flows across FastAPI and React/TypeScript.",
+      "Implemented parts of the investment and robo-advisor workflows across FastAPI and React/TypeScript.",
       "Integrated compatible market-data paths for Vietnamese equities, crypto, and gold.",
       "Contributed reports, frontend behavior, resilience fixes, and regression retesting."
     ],
@@ -128,7 +122,6 @@ export const projects: Project[] = [
     graphLabel: "Weather",
     type: "Team contribution - working prototype",
     period: "2026",
-    periodKey: "2026",
     cluster: "systems",
     featured: false,
     graphTags: ["FastAPI", "Data Engineering", "Evaluation"],
@@ -153,7 +146,6 @@ export const projects: Project[] = [
     graphLabel: "HR Analytics",
     type: "Individual coursework",
     period: "2025",
-    periodKey: "2025",
     cluster: "systems",
     featured: false,
     graphTags: ["Evaluation"],
@@ -178,7 +170,6 @@ export const projects: Project[] = [
     graphLabel: "Netflix Recsys",
     type: "Two-person coursework - project lead",
     period: "2025",
-    periodKey: "2025",
     cluster: "systems",
     featured: false,
     graphTags: ["Retrieval", "Data Visualization"],
@@ -203,7 +194,6 @@ export const projects: Project[] = [
     graphLabel: "Algorithm Lab",
     type: "Team contribution - completed coursework",
     period: "2025",
-    periodKey: "2025",
     cluster: "reasoning",
     featured: false,
     graphTags: ["Evaluation", "Optimization"],
@@ -228,7 +218,6 @@ export const projects: Project[] = [
     graphLabel: "Model Merging",
     type: "Team contribution",
     period: "2025",
-    periodKey: "2025",
     cluster: "vision",
     featured: false,
     graphTags: ["Evaluation", "Multimodal"],
@@ -247,7 +236,6 @@ export const projects: Project[] = [
     graphLabel: "WDI Tableau",
     type: "Team project - documented 25% contribution",
     period: "2026",
-    periodKey: "2026",
     cluster: "systems",
     featured: false,
     graphTags: ["Data Visualization", "Data Engineering"],
@@ -272,7 +260,6 @@ export const projects: Project[] = [
     graphLabel: "VietSport DB",
     type: "Team contribution - completed coursework",
     period: "2025",
-    periodKey: "2025",
     cluster: "systems",
     featured: false,
     graphTags: ["Data Engineering"],
@@ -296,15 +283,15 @@ export const projects: Project[] = [
 export const featuredProjects = projects.filter((project) => project.featured);
 export const compactProjects = projects.filter((project) => !project.featured);
 
-export interface ProjectEdge {
+interface ProjectEdge {
   source: string;
   target: string;
   sharedTags: string[];
   crossCluster: boolean;
 }
 
-export const projectEdges: ProjectEdge[] = projects.flatMap((source, index) =>
-  projects.slice(index + 1).flatMap((target) => {
+export const featuredProjectEdges: ProjectEdge[] = featuredProjects.flatMap((source, index) =>
+  featuredProjects.slice(index + 1).flatMap((target) => {
     const sharedTags = source.graphTags.filter((tag) => target.graphTags.includes(tag));
     return sharedTags.length
       ? [
@@ -318,12 +305,3 @@ export const projectEdges: ProjectEdge[] = projects.flatMap((source, index) =>
       : [];
   })
 );
-
-export const periodOptions = [
-  { value: "all", label: "All" },
-  { value: "2025", label: "2025" },
-  { value: "2025-2026", label: "2025-2026" },
-  { value: "2026", label: "2026" }
-] as const;
-
-export type PeriodFilter = (typeof periodOptions)[number]["value"];

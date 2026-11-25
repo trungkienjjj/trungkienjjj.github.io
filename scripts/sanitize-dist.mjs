@@ -4,13 +4,16 @@ import { dirname, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const distAssets = resolve(root, "dist", "assets");
-const heldLegacyCv = resolve(distAssets, "NguyenTranTrungKien_AI_ML_Research_CV.pdf");
+const heldAssets = [
+  resolve(distAssets, "NguyenTranTrungKien_AI_ML_Research_CV.pdf"),
+  resolve(distAssets, "NguyenTranTrungKien_AI_ML_Public_2026-07-21.pdf"),
+  resolve(distAssets, "NguyenTranTrungKien_AI_Engineer_Public_2026-07-27.pdf")
+];
 
-assert.equal(dirname(heldLegacyCv), distAssets, "Held asset target escaped dist/assets");
-
-if (existsSync(heldLegacyCv)) {
-  unlinkSync(heldLegacyCv);
+for (const heldAsset of heldAssets) {
+  assert.equal(dirname(heldAsset), distAssets, "Held asset target escaped dist/assets");
+  if (existsSync(heldAsset)) unlinkSync(heldAsset);
+  assert.equal(existsSync(heldAsset), false, "Held legacy CV remained in production output");
 }
 
-assert.equal(existsSync(heldLegacyCv), false, "Held legacy CV remained in production output");
-console.log("Production output excludes the held legacy public CV asset.");
+console.log("Production output excludes legacy CV assets.");

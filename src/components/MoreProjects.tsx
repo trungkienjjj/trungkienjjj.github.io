@@ -34,10 +34,9 @@ export function MoreProjects() {
   return (
     <section className="pt-10">
       <SectionHeader
-        figure="// index"
-        eyebrow="More projects"
-        title={`${compactProjects.length} compact case studies, still tied to evidence.`}
-        intro="Search by project, technology, or theme. Ownership labels remain visible in every result."
+        eyebrow="Project catalog"
+        title="More projects"
+        intro="Search by project, technology, or theme."
       />
       <div className="mb-7 grid gap-3 md:grid-cols-[1fr_20rem]">
         <div className="flex flex-wrap gap-2">
@@ -64,7 +63,7 @@ export function MoreProjects() {
           />
         </label>
       </div>
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid items-start gap-2 md:grid-cols-2">
         {visible.map((project) => <ProjectCard key={project.id} project={project} />)}
       </div>
       {!visible.length && (

@@ -1,6 +1,7 @@
+import { ExternalLink } from "./ExternalLink";
 import { m } from "framer-motion";
+import { publicCvPath } from "../data/profile";
 import { GraphExplorer } from "./TheGraph/GraphExplorer";
-import { ProofStrip } from "./ProofStrip";
 import { useMotionPreferences } from "../motion/MotionPreferences";
 
 export function Hero() {
@@ -19,18 +20,18 @@ export function Hero() {
           <m.div {...reveal} transition={{ duration: 0.55 }}>
             <div className="mb-5 inline-flex items-center gap-3 border border-teal/25 bg-teal/5 px-3 py-2 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-teal">
               <span className="h-1.5 w-1.5 bg-teal shadow-[0_0_14px_rgb(var(--teal))]" />
-              AI / ML / Evaluation
+              AI Engineering & Evaluation
             </div>
             <p className="mb-4 font-mono text-xs uppercase tracking-[0.16em] text-muted">
-              // Nguyen Tran Trung Kien · Ho Chi Minh City, Vietnam
+              Nguyen Tran Trung Kien · Ho Chi Minh City, Vietnam
             </p>
             <h1 className="font-mono text-[clamp(2.75rem,6vw,5.8rem)] font-semibold leading-[0.98] tracking-[-0.065em] text-paper">
               I build <span className="text-amber">measurable</span>, inspectable AI systems.
             </h1>
             <p className="mt-7 max-w-2xl text-base leading-7 text-muted sm:text-lg">
-              Artificial Intelligence undergraduate at HCMUS, with evidence-backed work in
-              Vietnamese OCR, evaluation, knowledge graphs, data pipelines, and reliable Python
-              services.
+              I study Artificial Intelligence at HCMUS. My projects span Vietnamese OCR,
+              dataset validation, and knowledge graph tooling for retrieval-augmented generation.
+              I also evaluate conversational AI and check Vietnamese speech transcripts.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a className="button-primary" href="#projects">
@@ -38,22 +39,22 @@ export function Hero() {
               </a>
               <a
                 className="button-secondary"
-                href="/assets/NguyenTranTrungKien_AI_ML_Public_2026-07-21.pdf"
+                href={publicCvPath}
                 download
               >
                 Download public CV
               </a>
             </div>
             <div className="mt-7 flex flex-wrap gap-5 font-mono text-xs text-muted">
-              <a className="text-link" href="https://github.com/trungkienjjj" target="_blank" rel="noreferrer">
-                GitHub [new tab]
-              </a>
-              <a className="text-link" href="https://linkedin.com/in/trungkienjjj" target="_blank" rel="noreferrer">
-                LinkedIn [new tab]
-              </a>
-              <a className="text-link" href="https://www.kaggle.com/nguyentrantrungkien" target="_blank" rel="noreferrer">
-                Kaggle [new tab]
-              </a>
+              <ExternalLink className="text-link" href="https://github.com/trungkienjjj">
+                GitHub
+              </ExternalLink>
+              <ExternalLink className="text-link" href="https://www.linkedin.com/in/trungkienjjj/">
+                LinkedIn
+              </ExternalLink>
+              <ExternalLink className="text-link" href="https://www.kaggle.com/nguyentrantrungkien">
+                Kaggle
+              </ExternalLink>
             </div>
           </m.div>
 
@@ -62,10 +63,9 @@ export function Hero() {
             transition={{ duration: 0.55, delay: reducedMotion ? 0 : 0.14 }}
             className="min-w-0"
           >
-            <GraphExplorer compact />
+            <GraphExplorer />
           </m.div>
         </div>
-        <ProofStrip />
       </div>
     </section>
   );

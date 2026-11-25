@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { publicCvPath } from "../data/profile";
 
 const navItems = [
   ["About", "#about"],
@@ -21,6 +22,7 @@ function GraphMark() {
 export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const firstNavLinkRef = useRef<HTMLAnchorElement>(null);
   const [theme, setTheme] = useState<"dark" | "light">(
     document.documentElement.dataset.theme === "light" ? "light" : "dark"
   );
@@ -35,6 +37,7 @@ export function Nav() {
 
   useEffect(() => {
     if (!menuOpen) return;
+    firstNavLinkRef.current?.focus();
 
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -64,6 +67,7 @@ export function Nav() {
           {navItems.map(([label, href]) => (
             <a
               key={href}
+              ref={href === navItems[0][1] ? firstNavLinkRef : undefined}
               href={href}
               onClick={() => setMenuOpen(false)}
               className="px-3 py-2 font-mono text-xs uppercase tracking-[0.12em] text-muted transition hover:text-paper focus-visible:text-paper"
@@ -72,7 +76,7 @@ export function Nav() {
             </a>
           ))}
           <a
-            href="/assets/NguyenTranTrungKien_AI_ML_Public_2026-07-21.pdf"
+            href={publicCvPath}
             download
             onClick={() => setMenuOpen(false)}
             className="mt-2 border-t border-line/10 px-3 pt-3 font-mono text-xs uppercase tracking-[0.12em] text-teal md:hidden"
@@ -85,14 +89,24 @@ export function Nav() {
           <button
             type="button"
             className="icon-button"
-            aria-label={`${theme === "dark" ? "Sun" : "Moon"}: switch to ${theme === "dark" ? "light" : "dark"} theme`}
+            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
             onClick={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
           >
-            <span aria-hidden="true">{theme === "dark" ? "sun" : "moon"}</span>
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor"
+              strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              {theme === "dark" ? (
+                <>
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42m0-14.14-1.42 1.42m-11.3 11.3-1.42 1.42" />
+                </>
+              ) : (
+                <path d="M20.8 14A8.9 8.9 0 0 1 10 3.2 9 9 0 1 0 20.8 14Z" />
+              )}
+            </svg>
           </button>
           <a
-            className="button-secondary hidden sm:inline-flex"
-            href="/assets/NguyenTranTrungKien_AI_ML_Public_2026-07-21.pdf"
+            className="button-secondary hidden md:inline-flex"
+            href={publicCvPath}
             download
           >
             Download public CV

@@ -6,12 +6,13 @@ const project = projects.find((item) => item.id === "legal-graph")!;
 
 export function LegalGraphCaseStudy() {
   return (
-    <article id={project.id} className="case-shell">
+    <article className="case-shell">
       <div className="case-grid">
-        <CaseIntro project={project} label="// case 03 - graph import + audit">
+        <CaseIntro project={project}>
           <p>
-            The scale figures describe team data exports. My scope was import tooling, graph
-            integrity audits, LLM evaluation artifacts, tests, and teammate setup guidance.
+            The team built a graph-based prototype for Vietnamese legal question answering.
+            These row counts come from the team's CSV exports. I worked on the import path,
+            integrity checks, and evaluation support.
           </p>
           <ul className="space-y-2 border-l border-teal/30 pl-4">
             {project.contributions.map((item) => (

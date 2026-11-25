@@ -22,9 +22,13 @@ const joined = publicTextFiles.map((path) => readFileSync(path, "utf8")).join("\
 const projects = readFileSync(join(root, "src", "data", "projects.ts"), "utf8");
 
 assert.doesNotMatch(joined, /[Ââ]/u, "Public source contains mojibake markers");
-assert.doesNotMatch(joined, /Agentic Temporal RAG|QLoRA|3\.81\s*\/\s*4|IELTS\s*6\.5|240 pages|>99%|7,833,706|~15 min|(?:\+?84\s*)?815[\s.-]*180[\s.-]*935|tel:/u, "Public source contains a blocked or unresolved claim");
+assert.doesNotMatch(joined, /Agentic Temporal RAG|QLoRA|Outlier|Babel Audio|Available immediately|minimum six-month commitment|8\.96\/10|IELTS\s*6\.5|240 pages|>99%|7,833,706|~15 min|(?:\+?84\s*)?815[\s.-]*180[\s.-]*935|tel:/u, "Public source contains a blocked, private, or unresolved claim");
 assert.match(joined, /nttkien080925@gmail\.com/u, "Approved public email is missing");
 assert.match(joined, /Ho Chi Minh City/u, "Approved public location is missing");
+assert.match(joined, /GPA: 9\.003\/10 \(3\.842\/4\.0\)/u, "Current GPA is missing");
+assert.match(joined, /2023-2027/u, "Approved education period is missing");
+assert.match(joined, /one of two recipients/u, "Approved scholarship cohort wording is missing");
+assert.equal((projects.match(/^\s+id: "/gm) ?? []).length, 11, "Exactly eleven project objects must be present");
 assert.equal((projects.match(/featured: true/g) ?? []).length, 4, "Exactly four projects must be featured");
 for (const id of ["deepseek-ocr", "historical-ocr", "legal-graph", "spendsense"]) {
   const block = projects.match(new RegExp(`id: "${id}"[\\s\\S]*?(?=\\n  \\{|\\n\\];)`))?.[0] ?? "";
@@ -53,7 +57,13 @@ for (const [id, status] of [
   assert.match(block, new RegExp(status), `${id} controlled status mismatch`);
 }
 assert.doesNotMatch(joined, /NguyenTranTrungKien_AI_ML_Research_CV\.pdf/u, "Legacy public CV asset must remain unlinked pending replacement approval");
-assert.match(joined, /NguyenTranTrungKien_AI_ML_Public_2026-07-21\.pdf/u, "Public-safe CV asset is not linked");
+assert.doesNotMatch(joined, /NguyenTranTrungKien_(?:AI_ML_Public_2026-07-21|AI_Engineer_Public_2026-07-27)\.pdf/u, "Superseded public CV asset must not remain linked");
+const profile = readFileSync(join(root, "src", "data", "profile.ts"), "utf8");
+const cvPath = profile.match(/export const publicCvPath = "(\/assets\/[^"]+\.pdf)";/u)?.[1];
+assert.ok(cvPath, "Current public CV path is missing");
+const cvFile = join(root, "public", cvPath.slice(1));
+assert.ok(existsSync(cvFile), "Current public CV asset is missing");
+assert.equal(readFileSync(cvFile).subarray(0, 5).toString("ascii"), "%PDF-", "CV asset must be a PDF");
 
 const ogPath = join(root, "public", "assets", "og-card.png");
 assert.ok(existsSync(ogPath), "1200x630 OG PNG is missing");

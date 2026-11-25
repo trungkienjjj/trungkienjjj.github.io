@@ -6,16 +6,16 @@ const project = projects.find((item) => item.id === "historical-ocr")!;
 
 export function HistoricalOcrCaseStudy() {
   return (
-    <article id={project.id} className="case-shell">
+    <article className="case-shell">
       <div className="case-grid">
-        <CaseIntro project={project} label="// case 02 - dataset engineering">
+        <CaseIntro project={project}>
           <p>
-            Repeated OCR ambiguities and page-layout errors were converted into deterministic
-            editing, geometry, filtering, and validation rules.
+            I built a line-break editor and text-to-box mapping tools, then added geometry,
+            filtering, and export checks to catch layout and alignment errors.
           </p>
           <p>
             My contribution produced <strong className="text-teal">8,687 aligned text lines</strong>{" "}
-            from <strong className="text-amber">235 artifact-backed source page images</strong>{" "}
+            from <strong className="text-amber">235 source page images</strong>{" "}
             within a team project.
           </p>
         </CaseIntro>

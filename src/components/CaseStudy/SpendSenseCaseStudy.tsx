@@ -12,16 +12,16 @@ const flow = [
 
 export function SpendSenseCaseStudy() {
   return (
-    <article id={project.id} className="case-shell">
+    <article className="case-shell">
       <div className="case-grid">
-        <CaseIntro project={project} label="// case 04 - full-stack product workflow">
+        <CaseIntro project={project}>
           <p>
             My scope connected the investment and robo-advisor workflow across FastAPI and
             React/TypeScript, including compatible market-data paths and report delivery.
           </p>
           <p className="border-l border-amber/40 pl-4 text-paper">
-            This is a bounded team contribution in a working prototype. No team-level outcome
-            metric or project-wide ownership is claimed.
+            I also worked on frontend error states and fallbacks, then retested the affected
+            flows in the team prototype.
           </p>
         </CaseIntro>
         <div className="grid gap-px border border-line/10 bg-line/10 sm:grid-cols-2">

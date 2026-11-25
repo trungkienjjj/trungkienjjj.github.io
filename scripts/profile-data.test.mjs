@@ -12,6 +12,7 @@ const nav = readFileSync(resolve(root, "src/components/Nav.tsx"), "utf8");
 const motion = readFileSync(resolve(root, "src/motion/MotionPreferences.tsx"), "utf8");
 
 test("featured project slate is evidence-aligned", () => {
+  assert.equal((projects.match(/^\s+id: "/gm) ?? []).length, 11);
   assert.equal((projects.match(/featured: true/g) ?? []).length, 4);
   for (const id of ["deepseek-ocr", "historical-ocr", "legal-graph", "spendsense"]) {
     assert.match(projects, new RegExp(`id: "${id}"[\\s\\S]*?featured: true`));
@@ -25,10 +26,11 @@ test("public metadata uses PNG social card and approved contact policy", () => {
   assert.doesNotMatch(index, /(?:\+?84\s*)?815[\s.-]*180[\s.-]*935|tel:/);
 });
 
-test("CV call to action uses the separate public-safe asset and not the held legacy asset", () => {
-  assert.match(hero, /\/assets\/NguyenTranTrungKien_AI_ML_Public_2026-07-21\.pdf/);
-  assert.match(hero, /\bdownload\b/);
-  assert.doesNotMatch(hero, /NguyenTranTrungKien_AI_ML_Research_CV\.pdf/);
+test("Hero and both navigation layouts use the shared public CV download", () => {
+  assert.match(hero, /import \{ publicCvPath \} from "\.\.\/data\/profile"/);
+  assert.match(nav, /import \{ publicCvPath \} from "\.\.\/data\/profile"/);
+  assert.equal((hero.match(/href=\{publicCvPath\}\s+download\b/g) ?? []).length, 1);
+  assert.equal((nav.match(/href=\{publicCvPath\}\s+download\b/g) ?? []).length, 2);
 });
 
 test("keyboard navigation retains a focusable skip target and Escape menu handling", () => {
