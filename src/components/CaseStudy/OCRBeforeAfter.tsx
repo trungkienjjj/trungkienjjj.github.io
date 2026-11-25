@@ -1,28 +1,5 @@
 import { useState } from "react";
-
-const examples = [
-  {
-    id: "diacritics",
-    label: "Vietnamese diacritics",
-    reference: "việc của họ.",
-    base: "viet cua ho.",
-    tuned: "việc của họ."
-  },
-  {
-    id: "spacing",
-    label: "Spacing",
-    reference: "25 - 30 con",
-    base: "25-30 con",
-    tuned: "25 - 30 con"
-  },
-  {
-    id: "short-word",
-    label: "A difficult short word",
-    reference: "cả",
-    base: "C2",
-    tuned: "Có?"
-  }
-];
+import examples from "../../data/ocr-examples.json";
 
 type Edit =
   | { kind: "match" | "added" | "missing"; character: string }
@@ -70,7 +47,7 @@ function compare(reference: string, output: string) {
 }
 
 function showCharacter(character: string) {
-  return character === " " ? "␠" : character;
+  return character === " " ? "space" : character;
 }
 
 function Output({ title, reference, value }: { title: string; reference: string; value: string }) {
@@ -86,8 +63,8 @@ function Output({ title, reference, value }: { title: string; reference: string;
         {edits.map((edit, index) => edit.kind === "match" ? (
           <span key={index}>{edit.character}</span>
         ) : (
-          <mark key={index} data-edit={edit.kind} className="ocr-edit"
-            title={edit.kind === "changed" ? "Expected " + showCharacter(edit.expected) : edit.kind === "missing" ? "Missing character" : "Extra character"}>
+          <mark key={index} data-edit={edit.kind} data-space={edit.character === " " || undefined} className="ocr-edit"
+            title={edit.kind === "changed" ? "Expected " + showCharacter(edit.expected) : edit.kind === "missing" ? "Missing " + showCharacter(edit.character) : "Extra " + showCharacter(edit.character)}>
             {showCharacter(edit.character)}
           </mark>
         ))}
@@ -110,8 +87,8 @@ export function OCRBeforeAfter() {
         ))}
       </div>
       <figure>
-        <img className="w-full border border-line/15 object-cover" width="768" height="158"
-          src={"/assets/ocr-" + example.id + ".png"} alt={example.reference} lang="vi" />
+        <img className="block h-auto w-full max-w-3xl border border-line/15" width="768" height="158"
+          src={new URL(`../../assets/ocr-${example.id}.png`, import.meta.url).href} alt={example.reference} lang="vi" />
         <figcaption className="mt-2 text-xs leading-5 text-muted">
           Redrawn reference text. The outputs below are excerpts from the recorded evaluation on the original handwriting.
         </figcaption>
@@ -122,7 +99,7 @@ export function OCRBeforeAfter() {
       </div>
       <p className="mt-3 text-xs leading-5 text-muted">
         <mark className="ocr-edit" data-edit="changed">Changed or extra</mark>{" · "}
-        <mark className="ocr-edit" data-edit="missing">Missing</mark>{" · ␠ marks a space."}
+        <mark className="ocr-edit" data-edit="missing">Missing</mark>
       </p>
       <p className="mt-2 text-xs leading-5 text-muted">
         CER here counts edits per character in the shown reference, including spaces and case.

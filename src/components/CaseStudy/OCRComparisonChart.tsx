@@ -84,7 +84,6 @@ export default function OCRComparisonChart() {
           height="100%"
           minWidth={0}
           minHeight={370}
-          initialDimension={{ width: 320, height: 370 }}
         >
           <BarChart accessibilityLayer={false} data={metrics} layout="vertical" margin={{ top: 20, right: 36, left: 10, bottom: 10 }}>
             <CartesianGrid stroke="rgb(var(--line) / 0.08)" horizontal={false} />

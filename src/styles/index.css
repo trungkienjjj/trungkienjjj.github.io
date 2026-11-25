@@ -243,6 +243,11 @@ a:focus-visible > .external-link-icon {
   text-decoration-color: rgb(var(--teal));
 }
 
+.ocr-edit[data-space="true"] {
+  padding-inline: 0.15em;
+  font-size: 0.68em;
+}
+
 .rules-block {
   overflow-x: auto;
   border: 1px solid rgb(var(--line) / 0.12);

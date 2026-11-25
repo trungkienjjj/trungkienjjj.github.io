@@ -1,0 +1,23 @@
+[
+  {
+    "id": "diacritics",
+    "label": "Vietnamese diacritics",
+    "reference": "việc của họ.",
+    "base": "viet cua ho.",
+    "tuned": "việc của họ."
+  },
+  {
+    "id": "spacing",
+    "label": "Spacing",
+    "reference": "25 - 30 con",
+    "base": "25-30 con",
+    "tuned": "25 - 30 con"
+  },
+  {
+    "id": "short-word",
+    "label": "A difficult short word",
+    "reference": "cả",
+    "base": "C2",
+    "tuned": "Có?"
+  }
+]
